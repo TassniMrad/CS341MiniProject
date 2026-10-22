@@ -39,7 +39,6 @@ public static int maxWater(int[] walls) {
             {14, 20, 15, 18, 2, 6, 7, 4, 0},
             {5, 18, 5, 10, 6, 6, 11, 17, 15, 11, 4, 14, 8, 19}
         };
-
         int[] expected = {
             30, 1, 1, 0, 0, 0, 12, 10, 12, 100, 25,
             25, 25, 20, 72, 10000, 4, 24, 16, 42, 216
@@ -56,7 +55,6 @@ public static int maxWater(int[] walls) {
                 System.out.println("FAIL test " + (t + 1) + ": got " + got + ", expected " + expected[t]);
             }
         }
-
         System.out.println(passed + "/" + tests.length + " passed");
     }
 }
