@@ -13,10 +13,8 @@ public static int maxWater(int[] walls) {
                 }
             }
         }
-
         return best;
     }
-
     public static void main(String[] args) {
         int[][] tests = {
             {2, 7, 3, 1, 6, 4, 2, 5},
