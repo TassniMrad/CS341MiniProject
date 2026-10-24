@@ -1,7 +1,9 @@
-// Try every pair of walls and keep the biggest area.
-public class Brute {
-public static int maxWater(int[] walls) {
+public class TwoFloodwalls {
+    /** Brute force solution. Time: O(n^2)  Space: O(1) */
+    public static int brute(int[] walls) {
         int best = 0;
+
+        // try every pair of walls and keep the biggest area
         for (int i = 0; i < walls.length; i++) {
             for (int j = i + 1; j < walls.length; j++) {
                 int height = Math.min(walls[i], walls[j]);
@@ -39,16 +41,14 @@ public static int maxWater(int[] walls) {
             {14, 20, 15, 18, 2, 6, 7, 4, 0},
             {5, 18, 5, 10, 6, 6, 11, 17, 15, 11, 4, 14, 8, 19}
         };
+
         int[] expected = {
             30, 1, 1, 0, 0, 0, 12, 10, 12, 100, 25,
             25, 25, 20, 72, 10000, 4, 24, 16, 42, 216
         };
-
         int passed = 0;
-
         for (int t = 0; t < tests.length; t++) {
-            int got = maxWater(tests[t]);
-
+            int got = brute(tests[t]);
             if (got == expected[t]) {
                 passed++;
             } else {
