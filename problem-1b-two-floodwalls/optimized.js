@@ -1,10 +1,12 @@
-// Start with the widest pair. The shorter wall limits the water,
-// so move the shorter wall inward and hope to find a taller one.
-public class Optimized {
-    public static int maxWater(int[] walls) {
+public class TwoFloodwalls {
+
+    /** Optimized solution. Time: O(n)  Space: O(1) */
+    public static int optimized(int[] walls) {
         int left = 0;
         int right = walls.length - 1;
         int best = 0;
+
+        // start with the widest pair, then move the shorter wall inward
         while (left < right) {
             int height = Math.min(walls[left], walls[right]);
             int width = right - left;
@@ -13,16 +15,19 @@ public class Optimized {
             if (area > best) {
                 best = area;
             }
+
             if (walls[left] < walls[right]) {
                 left++;
             } else {
                 right--;
             }
         }
+
         return best;
     }
 
     public static void main(String[] args) {
+        //small tests 
         int[][] tests = {
             {2, 7, 3, 1, 6, 4, 2, 5},
             {1, 1},
@@ -55,7 +60,7 @@ public class Optimized {
         int passed = 0;
 
         for (int t = 0; t < tests.length; t++) {
-            int got = maxWater(tests[t]);
+            int got = optimized(tests[t]);
 
             if (got == expected[t]) {
                 passed++;
@@ -65,5 +70,23 @@ public class Optimized {
         }
 
         System.out.println(passed + "/" + tests.length + " passed");
+
+        // large test 
+        // 100000 walls of height 1, with both end walls of height 10000.
+        // The best pair is the two ends: 10000 * 99999 = 999990000.
+        int n = 100000;
+        int[] big = new int[n];
+        for (int i = 0; i < n; i++) {
+            big[i] = 1;
+        }
+        big[0] = 10000;
+        big[n - 1] = 10000;
+
+        int bigGot = optimized(big);
+        if (bigGot == 999990000) {
+            System.out.println("large test: PASS");
+        } else {
+            System.out.println("large test: FAIL got " + bigGot + ", expected 999990000");
+        }
     }
 }
