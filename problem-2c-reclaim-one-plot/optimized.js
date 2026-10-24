@@ -1,8 +1,9 @@
-// Label each landmass once, then check each water cell's neighbors.
-// Time: O(n^2)  Space: O(n^2)
-public class ReclaimPlotOptimized {
+// Label each landmass once, then check each water cell's neighbors
+public class ReclaimPlot {
     static int[] dr = {-1, 1, 0, 0};
     static int[] dc = {0, 0, -1, 1};
+
+    /** Optimized solution. Time: O(n^2)  Space: O(n^2) */
     public static int optimized(int[][] city) {
         int n = city.length;
         int[][] id = new int[n][n];          
@@ -10,7 +11,6 @@ public class ReclaimPlotOptimized {
         int[] stack = new int[n * n];
         int count = 0;                      
         int best = 0;
-
         for (int r = 0; r < n; r++) {
             for (int c = 0; c < n; c++) {
                 if (city[r][c] == 1 && id[r][c] == 0) {
