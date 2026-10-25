@@ -1,8 +1,12 @@
+ /** Brute force solution. Time: O(n*k) which is with small n very close to O(n)  
+     * Space: O(1)
+     * 
+     * Brute force (O(n·k) time, O(1) space): For every starting day,
+     * I add up the next k temperatures and keep the biggest total. 
+     *  At the end I divide by k to get the average. */
 public class WarmestStretch {
-
-    /** Brute force solution. Time: O(n * k)  Space: O(1) */
     public static double brute(int[] temps, int k) {
-        // start with the sum of the first block of k days
+    	
         double bestSum = 0;
         for (int i = 0; i < k; i++) {
             bestSum = bestSum + temps[i];
@@ -17,4 +21,5 @@ public class WarmestStretch {
             }}
         return bestSum / k;
     }
+    
     
