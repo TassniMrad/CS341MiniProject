@@ -1,4 +1,11 @@
-/** Optimized solution. Time: O(n)  Space: O(1) */
+/** Optimized solution. Time: O(n)  Space: O(1)
+     * 
+     * Optimized (O(n) time, O(1) space): I add up the 
+     * first k days once. Then I slide the block over one day
+     *  at a time: I add the new day and subtract the day that 
+     *  just left. That way I never re-add the whole block, 
+     *  and I only go through the list once. */
+    
     public static double optimized(int[] temps, int k) {
   
         double sum = 0;
